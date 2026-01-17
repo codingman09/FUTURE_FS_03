@@ -2,19 +2,17 @@
 
 A stunning, responsive cafe management website featuring an elegant dark coffee theme, animated UI elements, and comprehensive menu management system. Built with modern web technologies to deliver an exceptional user experience.
 
-LIVE HOSTED WEBSITE OF THE PROJECT USING VERCEL : https://future-fs-03-rosy.vercel.app/
+LIVE HOSTED WEBSITE OF THE PROJECT USING VERCEL : https://future-fs-03-txoz.vercel.app/
 
  Screenshots of the project how it looks at diff section  :
-<img width="1878" height="897" alt="image" src="https://github.com/user-attachments/assets/f8f54d77-0e84-462c-946e-d0c40c956a85" />
-<img width="1880" height="545" alt="image" src="https://github.com/user-attachments/assets/6ba2df0d-fe36-472d-931a-845ec44ed2bc" />
-<img width="1847" height="771" alt="image" src="https://github.com/user-attachments/assets/a878835d-3dbc-4941-84ef-bef9aecdfd5c" />
-<img width="1852" height="847" alt="image" src="https://github.com/user-attachments/assets/d28c68ec-4f22-4725-acdc-4e7ce0d1725c" />
-<img width="1795" height="837" alt="image" src="https://github.com/user-attachments/assets/4bf49aae-ad00-49ca-a97e-db7482d6dd3c" />
-<img width="1832" height="847" alt="image" src="https://github.com/user-attachments/assets/1099e60b-711a-44ca-98b3-5eb3becf6e5a" />
-<img width="1817" height="853" alt="image" src="https://github.com/user-attachments/assets/7db6e97a-156e-47a4-9a22-71a9191c8723" />
-<img width="1821" height="863" alt="image" src="https://github.com/user-attachments/assets/4b2d51e1-a8a6-487d-bcc0-4b3cb41c320d" />
-<img width="1801" height="887" alt="image" src="https://github.com/user-attachments/assets/5bf79fa2-bd1b-4225-ba20-53072b8fc1f7" />
-<img width="1841" height="897" alt="image" src="https://github.com/user-attachments/assets/c251cd3f-815a-465f-9664-67f4c1e0d8b4" />
+<img width="1862" height="853" alt="image" src="https://github.com/user-attachments/assets/0be91ed9-e8c2-4f7e-b11c-3c5751ffa0ec" />
+<img width="1823" height="887" alt="image" src="https://github.com/user-attachments/assets/69b3df8b-e091-4973-bd16-a1e670d388f9" />
+<img width="1787" height="892" alt="image" src="https://github.com/user-attachments/assets/6cfbe0d9-4df0-4f20-a5d7-9204cae02a5c" />
+<img width="1820" height="888" alt="image" src="https://github.com/user-attachments/assets/74630bbe-b821-4033-9447-84fc302cfc36" />
+<img width="1796" height="866" alt="image" src="https://github.com/user-attachments/assets/2cbe3807-b907-4cb4-b1e4-d5feb4f80ff4" />
+<img width="1757" height="828" alt="image" src="https://github.com/user-attachments/assets/b3854f05-aa95-4714-bbec-442ec9a9ec97" />
+<img width="1710" height="885" alt="image" src="https://github.com/user-attachments/assets/94b6ae2b-5d18-4ad2-bccf-7d7cd11cdb62" />
+<img width="1765" height="903" alt="image" src="https://github.com/user-attachments/assets/cd84b84f-0866-4d84-aed0-669256713f0d" />
 
 Hero Section
 Features an elegant dark coffee theme with animated coffee cup and falling coffee beans
