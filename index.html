@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Brew - Premium Cafe Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #C44569;
+            --accent: #FFA07A;
+            --purple: #9B59B6;
+            --teal: #16A085;
+            --dark: #1A1A2E;
+            --light: #F8F3F0;
+            --cream: #FFF8DC;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1410 0%, #2d1f1a 50%, #1a1410 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            padding: 0 8%;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(139, 69, 19, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: left;
+            color: white;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 .accent-text {
+            background: linear-gradient(135deg, #D4A574, #F4E4C1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1.2s ease;
+            color: #C4A484;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-button {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #D4A574, #C4A484);
+            border: none;
+            color: #1a1410;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #D4A574;
+            color: #D4A574;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        /* Coffee Cup Visual */
+        .coffee-cup-container {
+            position: relative;
+            z-index: 2;
+            animation: fadeInRight 1.5s ease;
+        }
+
+        .coffee-cup {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cup {
+            width: 200px;
+            height: 160px;
+            background: linear-gradient(to bottom, #F5F5F5 0%, #E0E0E0 100%);
+            border-radius: 0 0 80px 80px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .cup::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 10px;
+            background: linear-gradient(to bottom, #FFFFFF, #E0E0E0);
+            border-radius: 50%;
+        }
+
+        .cup::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 80px;
+            border: 12px solid #E0E0E0;
+            border-left: none;
+            border-radius: 0 50% 50% 0;
+        }
+
+        .saucer {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 30px;
+            background: linear-gradient(to bottom, #2d2d2d, #1a1a1a);
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .coffee-liquid {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #6F4E37, #8B6F47);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .coffee-liquid::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        /* Coffee beans falling */
+        .coffee-bean {
+            position: absolute;
+            width: 25px;
+            height: 35px;
+            background: linear-gradient(135deg, #6F4E37, #4A3020);
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: fall 3s ease-in infinite;
+            opacity: 0;
+        }
+
+        .coffee-bean::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 3px;
+            height: 20px;
+            background: #3d2817;
+            border-radius: 2px;
+        }
+
+        .bean1 { top: -10%; right: 35%; animation-delay: 0s; }
+        .bean2 { top: -5%; right: 40%; animation-delay: 0.5s; }
+        .bean3 { top: -8%; right: 32%; animation-delay: 1s; }
+        .bean4 { top: -12%; right: 38%; animation-delay: 1.5s; }
+
+        @keyframes fall {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(400px) rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Steam effect */
+        .steam {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 60px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 50%;
+            animation: steam 2s ease-in-out infinite;
+        }
+
+        .steam:nth-child(2) {
+            left: 40%;
+            animation-delay: 0.5s;
+        }
+
+        .steam:nth-child(3) {
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        @keyframes steam {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(0) scaleX(1);
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-50px) scaleX(1.5);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Menu Section */
+        #menu {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, var(--cream), var(--light));
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Menu Tabs */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 3rem;
+            background: white;
+            border: 3px solid transparent;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--dark);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Menu Category Section */
+        .menu-category-section {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .subsection {
+            margin-bottom: 4rem;
+        }
+
+        .subsection-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+            color: var(--dark);
+            display: inline-block;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .menu-item:hover .menu-item-image::after {
+            left: 100%;
+        }
+
+        .menu-item-details {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .speciality {
+            color: #666;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .calories {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .add-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, var(--teal), #1ABC9C);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(22, 160, 133, 0.4);
+        }
+
+        /* About Section */
+        #about {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--purple), var(--teal));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 15px;
+            color: white;
+        }
+
+        .info-box h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #home {
+                flex-direction: column;
+                padding: 2rem 5%;
+                justify-content: center;
+            }
+
+            .hero-content {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .coffee-cup-container {
+                margin-top: 2rem;
+            }
+
+            .coffee-cup {
+                width: 300px;
+                height: 300px;
+            }
+
+            .cup {
+                width: 140px;
+                height: 120px;
+            }
+
+            .saucer {
+                width: 200px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats,
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">☕ Cosmic Brew</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#offers">Offers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ☕ Ethically Sourced Beans
+            </div>
+            <h1>
+                Artisan Coffee<br>
+                <span class="accent-text">Crafted with Passion</span>
+            </h1>
+            <p>Discover single-origin coffees roasted to perfection in small batches for exceptional flavor. Experience the journey from bean to cup with our master roasters.</p>
+            <div class="hero-buttons">
+                <button class="cta-button" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                    Explore Our Blends
+                </button>
+                <button class="cta-button secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                    Visit Our Café
+                </button>
+            </div>
+        </div>
+
+        <div class="coffee-cup-container">
+            <div class="coffee-cup">
+                <div class="coffee-bean bean1"></div>
+                <div class="coffee-bean bean2"></div>
+                <div class="coffee-bean bean3"></div>
+                <div class="coffee-bean bean4"></div>
+                
+                <div class="saucer"></div>
+                <div class="cup">
+                    <div class="coffee-liquid"></div>
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                    <div class="steam"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        
+        <!-- Menu Category Tabs -->
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="showCategory('drinks')">🥤 Drinks</button>
+            <button class="tab-btn" onclick="showCategory('food')">🍔 Food</button>
+        </div>
+
+        <!-- Drinks Section -->
+        <div id="drinks" class="menu-category-section">
+            <!-- Hot Coffee Subsection -->
+            <div class="subsection">
+                <h3 class="subsection-title">☕ Hot Coffee</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #8B4513, #D2691E);">
+                            <span style="font-size: 4rem;">☕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Caramel Macchiato</h3>
+                            <p class="speciality">✨ Freshly steamed milk with vanilla syrup, espresso, and caramel drizzle</p>
+                            <p class="calories">240 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 95.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #654321, #8B7355);">
+                            <span style="font-size: 4rem;">☕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Cappuccino</h3>
+                            <p class="speciality">✨ Dark rich espresso with steamed milk and a deep layer of foam</p>
+                            <p class="calories">140 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 75.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #C19A6B, #E5C9A1);">
+                            <span style="font-size: 4rem;">☕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Flat White</h3>
+                            <p class="speciality">✨ Smooth ristretto shots with velvety steamed whole milk</p>
+                            <p class="calories">180 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 85.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #8B4513, #CD853F);">
+                            <span style="font-size: 4rem;">☕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Mocha Frappuccino</h3>
+                            <p class="speciality">✨ Coffee meets chocolate with whipped cream and mocha drizzle</p>
+                            <p class="calories">370 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 99.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cold Coffee Subsection -->
+            <div class="subsection">
+                <h3 class="subsection-title">🧊 Cold Coffee</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #E8D5B7, #C4A484);">
+                            <span style="font-size: 4rem;">🥤</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Iced Vanilla Latte</h3>
+                            <p class="speciality">✨ Vanilla latte finished with vanilla protein cold foam</p>
+                            <p class="calories">244 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 89.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #D4A574, #B8956A);">
+                            <span style="font-size: 4rem;">🧋</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Cold Brew</h3>
+                            <p class="speciality">✨ Slow-steeped for 20 hours, smooth and naturally sweet</p>
+                            <p class="calories">5 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 79.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
+                            <span style="font-size: 4rem;">🌸</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Pink Drink</h3>
+                            <p class="speciality">✨ Strawberry acai refresher with coconut milk and strawberries</p>
+                            <p class="calories">140 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 95.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #D2691E, #F4A460);">
+                            <span style="font-size: 4rem;">🥤</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Caramel Ribbon Crunch</h3>
+                            <p class="speciality">✨ Buttery caramel syrup blended with coffee, milk and ice</p>
+                            <p class="calories">470 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 99.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food Section -->
+        <div id="food" class="menu-category-section" style="display: none;">
+            <!-- Burgers Subsection -->
+            <div class="subsection">
+                <h3 class="subsection-title">🍔 Burgers</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #FF6B35, #F7931E);">
+                            <span style="font-size: 4rem;">🍔</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Classic Cheese Burger</h3>
+                            <p class="speciality">✨ Juicy beef patty with cheddar, lettuce, tomato, and special sauce</p>
+                            <p class="calories">650 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 149.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #8B0000, #DC143C);">
+                            <span style="font-size: 4rem;">🍔</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Spicy Chicken Burger</h3>
+                            <p class="speciality">✨ Crispy fried chicken with jalapeños, pepper jack, and chipotle mayo</p>
+                            <p class="calories">720 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 169.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #228B22, #32CD32);">
+                            <span style="font-size: 4rem;">🥬</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Veggie Supreme Burger</h3>
+                            <p class="speciality">✨ Grilled veggie patty with avocado, sprouts, and herb aioli</p>
+                            <p class="calories">480 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 139.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza Subsection -->
+            <div class="subsection">
+                <h3 class="subsection-title">🍕 Pizza</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #DC143C, #FF6347);">
+                            <span style="font-size: 4rem;">🍕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Margherita Pizza</h3>
+                            <p class="speciality">✨ Fresh mozzarella, basil, tomatoes on hand-tossed crust</p>
+                            <p class="calories">890 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 179.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #8B4513, #D2691E);">
+                            <span style="font-size: 4rem;">🍕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>BBQ Chicken Pizza</h3>
+                            <p class="speciality">✨ Grilled chicken, red onions, cilantro, and tangy BBQ sauce</p>
+                            <p class="calories">1050 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 199.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #4B0082, #8A2BE2);">
+                            <span style="font-size: 4rem;">🍕</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Veggie Deluxe Pizza</h3>
+                            <p class="speciality">✨ Bell peppers, mushrooms, olives, onions, and fresh tomatoes</p>
+                            <p class="calories">820 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 189.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks & Sides -->
+            <div class="subsection">
+                <h3 class="subsection-title">🍟 Snacks & Sides</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #FFD700, #FFA500);">
+                            <span style="font-size: 4rem;">🍟</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Loaded Fries</h3>
+                            <p class="speciality">✨ Crispy fries topped with cheese, bacon bits, and ranch</p>
+                            <p class="calories">580 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 119.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #FF8C00, #FFA500);">
+                            <span style="font-size: 4rem;">🥨</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Chicken Nuggets</h3>
+                            <p class="speciality">✨ Crispy golden nuggets served with honey mustard and BBQ sauce</p>
+                            <p class="calories">420 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 129.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-image" style="background: linear-gradient(135deg, #DEB887, #F5DEB3);">
+                            <span style="font-size: 4rem;">🥐</span>
+                        </div>
+                        <div class="menu-item-details">
+                            <h3>Chocolate Croissant</h3>
+                            <p class="speciality">✨ Buttery, flaky pastry filled with rich Belgian chocolate</p>
+                            <p class="calories">340 kcal</p>
+                            <div class="menu-footer">
+                                <div class="price">₹ 109.00</div>
+                                <button class="add-btn">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Cosmic Brew</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Crafting Moments, One Cup at a Time</h2>
+                <p>Founded in 2020, Cosmic Brew emerged from a vision to create more than just a cafe – we wanted to build a universe where coffee culture meets artistic expression.</p>
+                <p>Our Gen Z-inspired space celebrates creativity, sustainability, and community. Every drink is crafted with ethically-sourced ingredients and served with love.</p>
+                <p>We believe in the power of connection, whether it's through our Instagram-worthy drinks, cozy atmosphere, or commitment to environmental responsibility.</p>
+            </div>
+            <div class="about-image">
+                ☕✨
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Organic Ingredients</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">5★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="offers" style="padding: 6rem 5%; background: linear-gradient(135deg, #FFF5E6 0%, #FFE4CC 100%);">
+        <h2 class="section-title">Special Rewards & Offers</h2>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p style="font-size: 1.3rem; color: #444; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                    We love our customers! Join our rewards program and enjoy exclusive benefits, special discounts, and party offers for our regular visitors.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+                <!-- Birthday Specials -->
+                <div style="background: white; padding: 2.5rem; border-radius: 25px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎂</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #FF6B9D, #C44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Birthday Party Special</h3>
+                    <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Free birthday cake and 20% off on all food items for birthday celebrations at our café!</p>
+                    <div style="background: linear-gradient(135deg, #FFE4E1, #FFC1CC); padding: 1rem; border-radius: 15px; font-weight: 600; color: #C44569;">Book Your Party Now!</div>
+                </div>
+
+                <!-- Regular Customer Rewards -->
+                <div style="background: white; padding: 2.5rem; border-radius: 25px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">⭐</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Loyalty Rewards</h3>
+                    <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Visit 5 times and get 1 free drink! Plus, earn points on every purchase for amazing rewards.</p>
+                    <div style="background: linear-gradient(135deg, #FFF8DC, #FFE5B4); padding: 1rem; border-radius: 15px; font-weight: 600; color: #DAA520;">Join Free Today!</div>
+                </div>
+
+                <!-- Group Discounts -->
+                <div style="background: white; padding: 2.5rem; border-radius: 25px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #9B59B6, #8E44AD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Group Party Offers</h3>
+                    <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Hosting a party for 10+ people? Get 15% discount on total bill plus complimentary snacks!</p>
+                    <div style="background: linear-gradient(135deg, #E8DAEF, #D7BDE2); padding: 1rem; border-radius: 15px; font-weight: 600; color: #8E44AD;">Reserve Your Spot!</div>
+                </div>
+
+                <!-- Weekend Special -->
+                <div style="background: white; padding: 2.5rem; border-radius: 25px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">☕</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(135deg, #16A085, #1ABC9C); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Weekend Specials</h3>
+                    <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">Every Saturday & Sunday: Buy 2 drinks get 1 free! Plus special weekend menu items.</p>
+                    <div style="background: linear-gradient(135deg, #D5F4E6, #A9DFBF); padding: 1rem; border-radius: 15px; font-weight: 600; color: #16A085;">Valid Every Weekend!</div>
+                </div>
+            </div>
+
+            <!-- CTA Banner -->
+            <div style="margin-top: 4rem; background: linear-gradient(135deg, #D4A574, #C4A484); padding: 3rem; border-radius: 30px; text-align: center; box-shadow: 0 20px 60px rgba(212, 165, 116, 0.3);">
+                <h3 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">Become a VIP Member Today!</h3>
+                <p style="color: #FFF8DC; font-size: 1.2rem; margin-bottom: 2rem;">Sign up for free and start earning rewards on your first visit. Special gifts for our regular customers!</p>
+                <button style="padding: 1.2rem 3rem; background: white; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 600; color: #8B4513; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); transition: transform 0.3s;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">Join Now - It's Free!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We\'ll get back to you soon! ✨');">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message ✨</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="info-box">
+                    <h4>📍 Location</h4>
+                    <p>D-4 Sangam<br>Opp Lal Bahadur Shastri<br>Vadodara, Gujarat</p>
+                </div>
+                <div class="info-box">
+                    <h4>📞 Phone</h4>
+                    <p>+91 98985 12340</p>
+                </div>
+                <div class="info-box">
+                    <h4>⏰ Hours</h4>
+                    <p>Mon-Sun<br>10 AM - 10 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>☕ Cosmic Brew</h3>
+            <p>Brewing happiness since 2020</p>
+            <div class="social-links">
+                <a href="#">📱</a>
+                <a href="#">💬</a>
+                <a href="#">📷</a>
+                <a href="#">🎵</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2026 Cosmic Brew. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu category switching
+        function showCategory(category) {
+            // Hide all categories
+            document.getElementById('drinks').style.display = 'none';
+            document.getElementById('food').style.display = 'none';
+            
+            // Show selected category
+            document.getElementById(category).style.display = 'block';
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Add smooth scroll effect and animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-item, .stat-box, .info-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
